@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const BlogNew = () => {
 
     const [title, setTitle] = useState<string>("");
     const [author, setAuthor] = useState<string>("");
     const [content, setContent] = useState<string>("");
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -19,7 +22,11 @@ const BlogNew = () => {
             console.log(json.error);
         }
         if(response.ok) {
+            setTitle("");
+            setAuthor("");
+            setContent("");
             console.log("New blog added", json);
+            navigate("/blogs");
         }
     }
 
