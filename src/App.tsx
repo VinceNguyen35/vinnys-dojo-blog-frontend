@@ -1,4 +1,5 @@
 // React Imports
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Page Imports
@@ -12,7 +13,22 @@ import NotFound from './pages/NotFound';
 // Component Imports
 import Navbar from './components/Navbar';
 
+// Redux Imports
+import { useSelector, useDispatch } from "react-redux";
+import { getBlogs } from "./redux/blogsSlice";
+import type { RootState, AppDispatch } from "./redux/store";
+
 function App() {
+
+  const dispatch = useDispatch<AppDispatch>();
+  const blogs = useSelector((state: RootState) => state.blogs);
+
+  useEffect(() => {
+    if(blogs.status === "idle") {
+      dispatch(getBlogs());
+    }
+  }, [blogs.status, dispatch]);
+
   return (
     <div className='app'>
       <Router>

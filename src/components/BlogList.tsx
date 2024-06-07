@@ -1,29 +1,26 @@
 // React Imports
-import { useState, useEffect } from "react";
+// import { useEffect } from "react";
+
+// Redux Imports
+import type { RootState } from "../redux/store";
+import type { Blog } from "../redux/blogsSlice";
+import { useSelector } from "react-redux";
 
 const BlogList = () => {
 
-    interface Blog {
-        id: number,
-        title: string,
-        author: string,
-        content: string,
-        created: string
-    }
+    const {blogs} = useSelector((state: RootState) => state.blogs);
+    
+    // useEffect(() => {
+    //     const getBlogs = async () => {
+    //         await this.blogs;
+    //     }
+    //     getBlogs();
+    // }, [blogs]);
 
-    const [blogs, setBlogs] = useState<Blog[]>([]);
-
-    useEffect(() => {
-        const fetchBlogList = async () => {
-            const response: Response = await fetch("http://localhost:3000/api/blogs");
-            const json: Blog[] = await response.json();
-            // Response will return an array of objects if working
-            if (response.ok) {
-                setBlogs(json);
-            }
-        };
-        fetchBlogList();
-    }, []);
+    // useEffect(() => {
+    //     dispatch(getBlogs());
+    //     console.log(blogs);
+    // }, [blogs, dispatch]);
 
     return (
         <div className="blog-list">
