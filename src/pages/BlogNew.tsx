@@ -8,12 +8,15 @@ import { addBlog } from "../redux/blogsSlice";
 
 const BlogNew = () => {
 
+    // State Variables
     const [title, setTitle] = useState<string>("");
     const [author, setAuthor] = useState<string>("");
     const [content, setContent] = useState<string>("");
 
+    // React Router Navigation
     const navigate = useNavigate();
 
+    // Redux Dispatch
     const dispatch = useDispatch();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -43,27 +46,23 @@ const BlogNew = () => {
         <div className="blog-new">
             <form onSubmit={handleSubmit}>
                 <h3>Add a New Blog</h3>
-
                 <label>Blog Title</label>
                 <input
                     type="text"
                     onChange={(event) => setTitle(event.target.value)}
                     value={title}
                 />
-
                 <label>Blog Author</label>
                 <input
                     type="text"
                     onChange={(event) => setAuthor(event.target.value)}
                     value={author}
                 />
-
                 <label>Blog Content</label>
                 <textarea
                     onChange={(event) => setContent(event.target.value)}
                     value={content}
                 />
-
                 <button>Add Blog</button>
             </form>
         </div>
