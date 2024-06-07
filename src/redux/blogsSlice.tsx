@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface Blog {
@@ -35,8 +35,9 @@ export const blogsSlice = createSlice({
     name: "blogs",
     initialState,
     reducers: {
-        addBlog (state: BlogsState, action: PayloadAction<Blog>) {
+        addBlog: (state: BlogsState, action: PayloadAction<Blog>) => {
             state.blogs.unshift(action.payload);
+            console.log(current(state.blogs));
         }
     },
     extraReducers: (builder) => {

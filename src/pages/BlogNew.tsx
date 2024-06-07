@@ -1,5 +1,10 @@
+// React Imports
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+// Redux Imports
+import { useDispatch } from "react-redux";
+import { addBlog } from "../redux/blogsSlice";
 
 const BlogNew = () => {
 
@@ -8,6 +13,8 @@ const BlogNew = () => {
     const [content, setContent] = useState<string>("");
 
     const navigate = useNavigate();
+
+    const dispatch = useDispatch();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -18,6 +25,7 @@ const BlogNew = () => {
             body: JSON.stringify(blog)
         });
         const json = await response.json();
+        // Response will return an array of 1 object if working
         if(!response.ok) {
             console.log(json.error);
         }
@@ -25,7 +33,8 @@ const BlogNew = () => {
             setTitle("");
             setAuthor("");
             setContent("");
-            console.log("New blog added", json);
+            console.log("New blog added", json[0]);
+            dispatch(addBlog(json[0]));
             navigate("/blogs");
         }
     }
