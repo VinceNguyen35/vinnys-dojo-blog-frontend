@@ -38,7 +38,7 @@ const BlogNew = () => {
             setContent("");
             console.log("New blog added", json[0]);
             dispatch(addBlog(json[0]));
-            navigate("/blogs");
+            navigate(`/blogs/${json[0].id}`);
         }
     }
 
