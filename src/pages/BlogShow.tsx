@@ -22,7 +22,7 @@ const BlogShow = () => {
     // Find the Blog
     useEffect(() => {
         const fetchBlog = async () => {
-            const response: Response = await fetch(`http://localhost:3000/api/blogs/${id}`);
+            const response: Response = await fetch(`http://13.57.55.157/api/blogs/${id}`);
             const json = await response.json();
             // Response will return an array of objects if working
             if (response.ok) {

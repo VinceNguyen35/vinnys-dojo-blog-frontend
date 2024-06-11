@@ -22,7 +22,7 @@ const initialState: BlogsState = {
 };
 
 export const getBlogs = createAsyncThunk("blogs/getBlogs", async () => {
-    const response: Response = await fetch("http://13.57.55.157/api/blogs/");
+    const response: Response = await fetch("http://localhost:3000/api/blogs");
     const json: Blog[] = await response.json();
     // Response will return an array of objects if working
     if (response.ok) {
