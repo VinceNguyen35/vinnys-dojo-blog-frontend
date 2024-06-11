@@ -26,7 +26,6 @@ export const getBlogs = createAsyncThunk("blogs/getBlogs", async () => {
     const json: Blog[] = await response.json();
     // Response will return an array of objects if working
     if (response.ok) {
-        console.log(json);
         return json;
     }
 });

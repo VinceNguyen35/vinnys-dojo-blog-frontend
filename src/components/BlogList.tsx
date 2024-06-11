@@ -6,6 +6,9 @@ import type { RootState } from "../redux/store";
 import type { Blog } from "../redux/blogsSlice";
 import { useSelector } from "react-redux";
 
+// Date Imports
+import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
+
 const BlogList = () => {
 
     // React Router Navigation
@@ -22,10 +25,9 @@ const BlogList = () => {
                     key={index}
                     onClick={() => navigate(`/blogs/${blog.id}`)}
                 >
-                    <h1>{blog.title}</h1>
-                    <h3>By {blog.author}</h3>
-                    <h6>Written on {blog.created}</h6>
-                    <p>{blog.content}</p>
+                    <h2>{blog.title}</h2>
+                    <h4>By {blog.author}</h4>
+                    <h6>Written {formatDistanceToNow(new Date(blog.created), { addSuffix: true })}</h6>
                 </div>
             ))}
         </div>

@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom";
 // Redux Imports
 import type { Blog } from "../redux/blogsSlice";
 
+// Date Imports
+import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
+
 const BlogShow = () => {
 
     // Router Variables
@@ -16,7 +19,7 @@ const BlogShow = () => {
         title: "",
         author: "",
         content: "",
-        created: ""
+        created: "2024-06-11T18:56:37.000Z"
     });
 
     // Find the Blog
@@ -37,7 +40,7 @@ const BlogShow = () => {
             <div className="blog">
                 <h1>{blog.title}</h1>
                 <h3>By {blog.author}</h3>
-                <h6>Written on {blog.created}</h6>
+                <h6>Written {formatDistanceToNow(new Date(blog.created), { addSuffix: true })}</h6>
                 <p>{blog.content}</p>
             </div>
         </div>
