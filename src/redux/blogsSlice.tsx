@@ -36,7 +36,14 @@ export const blogsSlice = createSlice({
     reducers: {
         addBlog: (state: BlogsState, action: PayloadAction<Blog>) => {
             state.blogs.unshift(action.payload);
-        }
+        },
+        updateBlog: (state: BlogsState, action: PayloadAction<Blog>) => {
+            // Find the blog to update
+            const idOfUpdatedBlog: number = action.payload.id;
+            const indexOfUpdatedBlog: number = state.blogs.findIndex((blog) => blog.id === idOfUpdatedBlog);
+            // Update the blog
+            state.blogs[indexOfUpdatedBlog] = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(getBlogs.fulfilled, (state, action) => {
@@ -49,6 +56,6 @@ export const blogsSlice = createSlice({
     }
 });
 
-export const { addBlog } = blogsSlice.actions;
+export const { addBlog, updateBlog } = blogsSlice.actions;
 
 export default blogsSlice.reducer;

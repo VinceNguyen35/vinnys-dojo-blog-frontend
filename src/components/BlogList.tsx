@@ -27,7 +27,7 @@ const BlogList = () => {
                 >
                     <h2>{blog.title}</h2>
                     <h4>By {blog.author}</h4>
-                    <h6>Written {formatDistanceToNow(new Date(blog.created), { addSuffix: true })}</h6>
+                    <h6>Written on {formatDistanceToNow(new Date(blog.created), { addSuffix: true })}</h6>
                 </div>
             ))}
         </div>

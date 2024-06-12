@@ -1,6 +1,6 @@
 // React Imports
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 // Redux Imports
 import type { Blog } from "../redux/blogsSlice";
@@ -10,8 +10,9 @@ import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
 
 const BlogShow = () => {
 
-    // Router Variables
+    // React Router Variables
     const {id} = useParams();
+    const navigate = useNavigate();
 
     // State Variable
     const [blog, setBlog] = useState<Blog>({
@@ -42,6 +43,19 @@ const BlogShow = () => {
                 <h3>By {blog.author}</h3>
                 <h6>Written {formatDistanceToNow(new Date(blog.created), { addSuffix: true })}</h6>
                 <p>{blog.content}</p>
+            </div>
+            <div>
+                <div
+                    className="button edit"
+                    onClick={() => navigate(`/blogs/${blog.id}/edit`)}
+                >
+                    Edit
+                </div>
+                <div
+                    className="button delete"
+                >
+                    Delete
+                </div>
             </div>
         </div>
     );

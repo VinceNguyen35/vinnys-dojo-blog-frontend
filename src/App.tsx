@@ -39,7 +39,7 @@ function App() {
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/new" element={<BlogNew />} />
             <Route path="/blogs/:id" element={<BlogShow />} />
-            <Route path="/edit" element={<BlogEdit />} />
+            <Route path="/blogs/:id/edit" element={<BlogEdit />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
