@@ -4,6 +4,8 @@ import { useParams, useNavigate } from "react-router-dom";
 
 // Redux Imports
 import type { Blog } from "../redux/blogsSlice";
+import { deleteBlog } from "../redux/blogsSlice";
+import { useDispatch } from "react-redux";
 
 // Date Imports
 import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
@@ -13,6 +15,9 @@ const BlogShow = () => {
     // React Router Variables
     const {id} = useParams();
     const navigate = useNavigate();
+
+    // Redux Variables
+    const dispatch = useDispatch();
 
     // State Variable
     const [blog, setBlog] = useState<Blog>({
@@ -36,6 +41,23 @@ const BlogShow = () => {
         fetchBlog();
     }, [id]);
 
+    // Handle Deleting a Blog
+    const handleDelete = async () => {
+        const response = await fetch(`http://13.57.55.157/api/blogs/${id}`, {
+            method: "DELETE"
+        });
+        const json = await response.json();
+        // Response will return an array of 1 object if working
+        if (!response.ok) {
+            console.log(json.error);
+        }
+        if (response.ok) {
+            console.log("Blog Deleted", json[0]);
+            dispatch(deleteBlog(json[0]));
+            navigate("/");
+        }
+    }
+
     return (
         <div className="blog-show">
             <div className="blog">
@@ -53,6 +75,7 @@ const BlogShow = () => {
                 </div>
                 <div
                     className="button delete"
+                    onClick={() => handleDelete()}
                 >
                     Delete
                 </div>
