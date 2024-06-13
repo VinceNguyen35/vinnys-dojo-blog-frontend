@@ -13,6 +13,7 @@ import NotFound from './pages/NotFound';
 // Component Imports
 import Header from './components/Header';
 import Navbar from './components/Navbar';
+import Footer from "./components/Footer";
 
 // Redux Imports
 import { useSelector, useDispatch } from "react-redux";
@@ -31,20 +32,19 @@ function App() {
   }, [blogs.status, dispatch]);
 
   return (
-    <div className='app'>
-      <Router>
-        <Header />
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/blogs/new" element={<BlogNew />} />
-          <Route path="/blogs/:id" element={<BlogShow />} />
-          <Route path="/blogs/:id/edit" element={<BlogEdit />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Header />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blogs/new" element={<BlogNew />} />
+        <Route path="/blogs/:id" element={<BlogShow />} />
+        <Route path="/blogs/:id/edit" element={<BlogEdit />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+    </Router>
   )
 }
 

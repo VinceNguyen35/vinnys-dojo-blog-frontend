@@ -1,0 +1,28 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    background-color: lighten(gray, 20%);
+    width: 100%;
+    padding: 3px 0;
+    text-align: center;
+
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    img {
+        width: 30px;
+        padding: 5px;
+    }
+
+    p {
+        font-size: smaller;
+    }
+
+    :hover {
+        background-color: lighten(gray, 40%);
+    }
+}

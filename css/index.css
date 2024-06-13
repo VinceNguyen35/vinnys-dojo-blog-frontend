@@ -36,6 +36,8 @@ img {
 }
 
 h1 {
+  background-color: #b3b3b3;
+  padding: 10px 0;
   text-align: center;
 }
 
@@ -43,14 +45,36 @@ nav {
   display: flex;
   justify-content: center;
   cursor: pointer;
+  background-color: #eeb332;
 }
 nav a {
   padding: 5px 15px;
 }
 nav :hover {
-  background-color: #1ac886;
+  background-color: #fae7bf;
 }
 
-.home {
-  background-color: #326dee;
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #b3b3b3;
+  width: 100%;
+  padding: 3px 0;
+  text-align: center;
+}
+footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+footer img {
+  width: 30px;
+  padding: 5px;
+}
+footer p {
+  font-size: smaller;
+}
+footer :hover {
+  background-color: #e6e6e6;
 }
