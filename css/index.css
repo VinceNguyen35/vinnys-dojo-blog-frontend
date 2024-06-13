@@ -35,6 +35,22 @@ img {
   border-radius: 20px;
 }
 
+h1 {
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+nav a {
+  padding: 5px 15px;
+}
+nav :hover {
+  background-color: #1ac886;
+}
+
 .home {
   background-color: #326dee;
 }

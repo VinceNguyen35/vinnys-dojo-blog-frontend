@@ -1,0 +1,11 @@
+nav {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    a {
+        padding: 5px 15px;
+    }
+    :hover {
+        background-color: $secondary;
+    }
+}
