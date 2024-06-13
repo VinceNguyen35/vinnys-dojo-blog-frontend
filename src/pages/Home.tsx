@@ -3,9 +3,9 @@ import LatestBlog from "../components/LatestBlog";
 
 const Home = () => {
     return (
-        <div className="home">
+        <main className="home">
             <LatestBlog />
-        </div>
+        </main>
     );
 }
  

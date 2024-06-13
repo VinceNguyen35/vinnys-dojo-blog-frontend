@@ -11,6 +11,7 @@ import BlogShow from './pages/BlogShow';
 import NotFound from './pages/NotFound';
 
 // Component Imports
+import Header from './components/Header';
 import Navbar from './components/Navbar';
 
 // Redux Imports
@@ -32,17 +33,16 @@ function App() {
   return (
     <div className='app'>
       <Router>
+        <Header />
         <Navbar />
-        <div className="pages">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blogs/new" element={<BlogNew />} />
-            <Route path="/blogs/:id" element={<BlogShow />} />
-            <Route path="/blogs/:id/edit" element={<BlogEdit />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/new" element={<BlogNew />} />
+          <Route path="/blogs/:id" element={<BlogShow />} />
+          <Route path="/blogs/:id/edit" element={<BlogEdit />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </Router>
     </div>
   )

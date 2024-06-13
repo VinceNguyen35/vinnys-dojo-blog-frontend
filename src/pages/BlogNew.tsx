@@ -43,7 +43,7 @@ const BlogNew = () => {
     }
 
     return (
-        <div className="blog-new">
+        <main className="blog-new">
             <form onSubmit={handleSubmit}>
                 <h3>Add a New Blog</h3>
                 <label>Blog Title</label>
@@ -65,7 +65,7 @@ const BlogNew = () => {
                 />
                 <button>Add Blog</button>
             </form>
-        </div>
+        </main>
     );
 }
  

@@ -36,17 +36,15 @@ const LatestBlog = () => {
     }, []);
 
     return (
-        <div className="latest-blog">
+        <article
+            className="latest-blog"
+            onClick={() => navigate(`/blogs/${latestBlog.id}`)}
+        >
             <h2>Latest Blog:</h2>
-            <div
-                className="blog"
-                onClick={() => navigate(`/blogs/${latestBlog.id}`)}
-            >
-                <h2>{latestBlog.title}</h2>
-                <h4>By {latestBlog.author}</h4>
-                <h6>Written on {formatDistanceToNow(new Date(latestBlog.created), { addSuffix: true })}</h6>
-            </div>
-        </div>
+            <h3>{latestBlog.title}</h3>
+            <h4>By {latestBlog.author}</h4>
+            <h6>Written {formatDistanceToNow(new Date(latestBlog.created), { addSuffix: true })}</h6>
+        </article>
     );
 }
  

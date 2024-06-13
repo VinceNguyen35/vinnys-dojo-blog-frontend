@@ -59,7 +59,7 @@ const BlogShow = () => {
     }
 
     return (
-        <div className="blog-show">
+        <main className="blog-show">
             <div className="blog">
                 <h1>{blog.title}</h1>
                 <h3>By {blog.author}</h3>
@@ -80,7 +80,7 @@ const BlogShow = () => {
                     Delete
                 </div>
             </div>
-        </div>
+        </main>
     );
 }
  
