@@ -4,6 +4,8 @@
 
 // base
 @import "base/base";
+@import "base/colors";
+@import "base/section";
 
 // layout
 @import "layout/breakpoints";
@@ -13,6 +15,9 @@
 // components
 @import "components/header";
 @import "components/navbar";
+@import "components/bio";
+@import "components/latestBlog";
+@import "components/sidebar";
 @import "components/blogList";
 @import "components/footer";
 

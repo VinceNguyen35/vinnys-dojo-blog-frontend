@@ -1,0 +1,13 @@
+.home {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-top: 50px;
+
+    .info-main {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        width: 600px;
+    }
+}
