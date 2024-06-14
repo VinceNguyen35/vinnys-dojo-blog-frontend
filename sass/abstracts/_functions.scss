@@ -3,3 +3,9 @@
     $light-complement: lighten($complement, 30%);
     @return $light-complement;
 }
+
+@function dark-comp($color) {
+    $complement: complement($color);
+    $dark-complement: darken($complement, 10%);
+    @return $dark-complement;
+}

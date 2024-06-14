@@ -1,5 +1,5 @@
 @mixin section() {
-    background-color: blanchedalmond;
+    background-color: light-comp($primary);
     padding: 10px;
     border: 1px solid black;
     border-radius: 10px;

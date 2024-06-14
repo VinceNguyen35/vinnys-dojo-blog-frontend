@@ -1,12 +1,12 @@
 nav {
     display: flex;
     justify-content: center;
-    cursor: pointer;
     background-color: complement($primary);
     a {
         padding: 5px 15px;
     }
     :hover {
+        cursor: pointer;
         background-color: light-comp($primary);
     }
 }
