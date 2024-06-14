@@ -77,6 +77,15 @@ nav :hover {
   height: 95%;
 }
 
+.blog-list-item {
+  background-color: #fae7bf;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: white;
+  margin: 25px;
+}
+
 footer {
   position: fixed;
   bottom: 0;
@@ -116,4 +125,12 @@ footer :hover {
 }
 .home .latest-blog:hover {
   background-color: #db9c12;
+}
+
+.blogs {
+  background-color: #fae7bf;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 50px;
 }

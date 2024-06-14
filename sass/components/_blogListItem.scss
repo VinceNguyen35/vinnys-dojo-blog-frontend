@@ -1,0 +1,5 @@
+.blog-list-item {
+    @include section();
+    background-color: white;
+    margin: 25px;
+}
