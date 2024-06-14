@@ -15,6 +15,7 @@ const LatestBlog = () => {
         id: 0,
         title: "",
         author: "",
+        category: "",
         content: "",
         created: "2024-06-11T18:56:37.000Z"
     });
@@ -43,7 +44,8 @@ const LatestBlog = () => {
             <h2>Latest Blog:</h2>
             <h3>{latestBlog.title}</h3>
             <h4>By {latestBlog.author}</h4>
-            <h5>Written {formatDistanceToNow(new Date(latestBlog.created), { addSuffix: true })}</h5>
+            <h5>Category: {latestBlog.category}</h5>
+            <h6>Written {formatDistanceToNow(new Date(latestBlog.created), { addSuffix: true })}</h6>
         </article>
     );
 }

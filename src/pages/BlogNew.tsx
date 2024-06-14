@@ -11,6 +11,7 @@ const BlogNew = () => {
     // State Variables
     const [title, setTitle] = useState<string>("");
     const [author, setAuthor] = useState<string>("");
+    const [category, setCategory] = useState<string>("");
     const [content, setContent] = useState<string>("");
 
     // React Router Navigation
@@ -21,7 +22,7 @@ const BlogNew = () => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const blog = { title, author, content };
+        const blog = { title, author, category, content };
         const response = await fetch("http://13.57.55.157/api/blogs", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -35,6 +36,7 @@ const BlogNew = () => {
         if(response.ok) {
             setTitle("");
             setAuthor("");
+            setCategory("");
             setContent("");
             console.log("New blog added", json[0]);
             dispatch(addBlog(json[0]));
@@ -57,6 +59,12 @@ const BlogNew = () => {
                     type="text"
                     onChange={(event) => setAuthor(event.target.value)}
                     value={author}
+                />
+                <label>Blog Category</label>
+                <input
+                    type="text"
+                    onChange={(event) => setCategory(event.target.value)}
+                    value={category}
                 />
                 <label>Blog Content</label>
                 <textarea
