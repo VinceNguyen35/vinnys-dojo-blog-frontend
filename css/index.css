@@ -69,6 +69,10 @@ nav :hover {
   cursor: pointer;
 }
 
+.latest-blog:hover {
+  background-color: #eeb332;
+}
+
 .sidebar {
   background-color: #fae7bf;
   padding: 10px;
@@ -82,8 +86,13 @@ nav :hover {
   padding: 10px;
   border: 1px solid black;
   border-radius: 10px;
+  cursor: pointer;
   background-color: white;
   margin: 25px;
+}
+
+.blog-list-item:hover {
+  background-color: #eeb332;
 }
 
 footer {
@@ -122,9 +131,6 @@ footer :hover {
   flex-direction: column;
   gap: 30px;
   width: 600px;
-}
-.home .latest-blog:hover {
-  background-color: #db9c12;
 }
 
 .blogs {

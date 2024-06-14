@@ -1,5 +1,10 @@
 .blog-list-item {
     @include section();
+    cursor: pointer;
     background-color: white;
     margin: 25px;
+}
+
+.blog-list-item:hover {
+    background-color: complement($primary);
 }

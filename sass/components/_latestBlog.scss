@@ -2,3 +2,7 @@
     @include section();
     cursor: pointer;
 }
+
+.latest-blog:hover {
+    background-color: complement($primary);
+}
