@@ -1,14 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-
-export interface Blog {
-    id: number,
-    title: string,
-    author: string,
-    category: string,
-    content: string,
-    created: string
-}
+import type { Blog } from "../types/blog";
 
 export interface BlogsState {
     blogs: Blog[],

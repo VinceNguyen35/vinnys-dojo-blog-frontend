@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 // Redux Imports
-import type { Blog } from "../redux/blogsSlice";
+import type { Blog } from "../types/blog";
 import { updateBlog } from "../redux/blogsSlice";
 import { useDispatch } from "react-redux";
 
