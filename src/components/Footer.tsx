@@ -8,7 +8,7 @@ const Footer = () => {
             >
                 <img
                     className="github-icon"
-                    src="./src/assets/github-icon.svg"
+                    src="/github-icon.svg"
                     alt="github icon"
                 />
                 <p><strong>Github: </strong>github.com/VinceNguyen35</p>
@@ -20,7 +20,7 @@ const Footer = () => {
             >
                 <img
                     className="laptop"
-                    src="./src/assets/laptop.svg"
+                    src="/laptop.svg"
                     alt="laptop icon"
                 />
                 <p><strong>Frontend: </strong>github.com/VinceNguyen35/vinnys-dojo-blog-frontend</p>
@@ -32,7 +32,7 @@ const Footer = () => {
             >
                 <img
                     className="server"
-                    src="./src/assets/server.svg"
+                    src="/server.svg"
                     alt="server icon"
                 />
                 <p><strong>Backend: </strong>github.com/VinceNguyen35/vinnys-dojo-blog-backend</p>
