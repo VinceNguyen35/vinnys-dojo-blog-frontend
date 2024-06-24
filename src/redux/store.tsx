@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import blogsReducer from "./blogsSlice";
 import latestBlogReducer from "./latestBlogSlice";
+import categoriesReducer from "./categoriesSlice";
 
 export const store = configureStore({
     reducer: {
         blogs: blogsReducer,
-        latestBlog: latestBlogReducer
+        latestBlog: latestBlogReducer,
+        categories: categoriesReducer
     }
 });
 

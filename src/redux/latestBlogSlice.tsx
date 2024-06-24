@@ -2,13 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { Blog } from "../types/blog";
 
-export interface BlogsState {
+export interface LatestBlogState {
     latestBlog: Blog,
     status: string,
     error: string | null
 }
 
-const initialState: BlogsState = {
+const initialState: LatestBlogState = {
     latestBlog: {
         id: 0,
         title: "",
@@ -34,7 +34,7 @@ export const latestBlogSlice = createSlice({
     name: "latestBlog",
     initialState,
     reducers: {
-        updateLatestBlog: (state: BlogsState, action: PayloadAction<Blog>) => {
+        updateLatestBlog: (state: LatestBlogState, action: PayloadAction<Blog>) => {
             state.latestBlog = action.payload;
         }
     },
