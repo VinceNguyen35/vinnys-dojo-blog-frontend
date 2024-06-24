@@ -44,7 +44,7 @@ const BlogShow = () => {
 
     // Handle Deleting a Blog
     const handleDelete = async () => {
-        const response = await fetch(`http://13.57.55.157/api/blogs/${id}`, {
+        const response = await fetch(`https://wfywh0o582.execute-api.us-west-1.amazonaws.com/api/blogs/${id}`, {
             method: "DELETE"
         });
         const json = await response.json();

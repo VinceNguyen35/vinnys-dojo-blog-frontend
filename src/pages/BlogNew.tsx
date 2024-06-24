@@ -23,7 +23,7 @@ const BlogNew = () => {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const blog = { title, author, category, content };
-        const response = await fetch("http://13.57.55.157/api/blogs", {
+        const response = await fetch("https://wfywh0o582.execute-api.us-west-1.amazonaws.com/api/blogs", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(blog)
