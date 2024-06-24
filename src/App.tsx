@@ -13,7 +13,6 @@ import NotFound from './pages/NotFound';
 // Component Imports
 import Header from './components/Header';
 import Navbar from './components/Navbar';
-import Footer from "./components/Footer";
 
 // Redux Imports
 import { useSelector, useDispatch } from "react-redux";
@@ -43,7 +42,6 @@ function App() {
         <Route path="/blogs/:id/edit" element={<BlogEdit />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
     </Router>
   )
 }
