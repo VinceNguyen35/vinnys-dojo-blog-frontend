@@ -1,51 +1,41 @@
 // React Imports
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-// Type Imports
-import type { Blog } from "../types/blog";
+// Redux Imports
+import { useSelector, useDispatch } from "react-redux";
+import { getLatestBlog } from "../redux/latestBlogSlice";
+import { RootState, AppDispatch } from "../redux/store";
 
 // Date Imports
 import { formatDistanceToNow } from "date-fns";
 
 const LatestBlog = () => {
 
-    // State Variables
-    const [latestBlog, setLatestBlog] = useState<Blog>({
-        id: 0,
-        title: "",
-        author: "",
-        category: "",
-        content: "",
-        created: "2024-06-11T18:56:37.000Z"
-    });
-
     // Router Variables
     const navigate = useNavigate();
 
+    // Redux Variables
+    const dispatch = useDispatch<AppDispatch>();
+    const latestBlog = useSelector((state: RootState) => state.latestBlog);
+
     // useEffect Hook
     useEffect(() => {
-        const fetchLatestBlog = async () => {
-            const response: Response = await fetch(`https://wfywh0o582.execute-api.us-west-1.amazonaws.com/api/blogs/latest`);
-            const json = await response.json();
-            // Response will return an array of objects if working
-            if (response.ok) {
-                setLatestBlog(json[0]);
-            }
+        if(latestBlog.status === "idle") {
+            dispatch(getLatestBlog());
         }
-        fetchLatestBlog();
-    }, []);
+    }, [dispatch, latestBlog.status]);
 
     return (
         <article
             className="latest-blog"
-            onClick={() => navigate(`/blogs/${latestBlog.id}`)}
+            onClick={() => navigate(`/blogs/${latestBlog.latestBlog.id}`)}
         >
             <h2>Latest Blog:</h2>
-            <h3>{latestBlog.title}</h3>
-            <h4>By {latestBlog.author}</h4>
-            <h5>Category: {latestBlog.category}</h5>
-            <h6>Written {formatDistanceToNow(new Date(latestBlog.created), { addSuffix: true })}</h6>
+            <h3>{latestBlog.latestBlog.title}</h3>
+            <h4>By {latestBlog.latestBlog.author}</h4>
+            <h5>Category: {latestBlog.latestBlog.category}</h5>
+            <h6>Written {formatDistanceToNow(new Date(latestBlog.latestBlog.created), { addSuffix: true })}</h6>
         </article>
     );
 }
