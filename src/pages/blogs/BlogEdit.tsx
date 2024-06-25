@@ -31,7 +31,7 @@ const BlogEdit = () => {
             if (response.ok) {
                 setTitle(json[0].title);
                 setAuthor(json[0].author);
-                setCategory(json[0].content);
+                setCategory(json[0].category);
                 setContent(json[0].content);
             }
         }
