@@ -3381,6 +3381,17 @@ nav :hover {
   margin: 50px;
 }
 
+.blog-show {
+  background-color: #fae7bf;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 50px;
+}
+.blog-show p {
+  margin: 20px 0;
+}
+
 .categories {
   margin: 50px;
 }

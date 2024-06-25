@@ -61,27 +61,25 @@ const BlogShow = () => {
 
     return (
         <main className="blog-show">
-            <div className="blog">
+            <article className="blog">
                 <h2>{blog.title}</h2>
                 <h3>By {blog.author}</h3>
                 <h4>Category: {blog.category}</h4>
                 <h6>Written {formatDistanceToNow(new Date(blog.created), { addSuffix: true })}</h6>
                 <p>{blog.content}</p>
-            </div>
-            <div>
-                <div
-                    className="button edit"
-                    onClick={() => navigate(`/blogs/${blog.id}/edit`)}
-                >
-                    Edit
-                </div>
-                <div
-                    className="button delete"
-                    onClick={() => handleDelete()}
-                >
-                    Delete
-                </div>
-            </div>
+            </article>
+            <button
+                className="button edit"
+                onClick={() => navigate(`/blogs/${blog.id}/edit`)}
+            >
+                Edit
+            </button>
+            <button
+                className="button delete"
+                onClick={() => handleDelete()}
+            >
+                Delete
+            </button>
         </main>
     );
 }
