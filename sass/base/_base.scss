@@ -9,6 +9,7 @@
 
 body {
     font-family: Poppins;
+    // background-color: $background;
 }
 
 ul {
@@ -25,10 +26,12 @@ hr {
     border-top: 1px dotted #efefef;
 }
 
-img {
-    max-width: 100%;
-}
-
-.test {
-    color: $primary;
+.background {
+    min-height: 200%;
+    width: 200%;
+    height: auto;
+    position: absolute;
+    // top: 20%;
+    z-index: -1;
+    opacity: 40%;
 }
