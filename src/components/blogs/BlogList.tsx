@@ -1,6 +1,6 @@
 // Redux Imports
-import type { RootState } from "../redux/store";
-import type { Blog } from "../types/blog";
+import type { RootState } from "../../redux/store";
+import type { Blog } from "../../types/blog";
 import { useSelector } from "react-redux";
 
 // Component Imports

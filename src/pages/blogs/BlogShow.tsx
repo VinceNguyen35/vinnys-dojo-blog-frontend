@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 // Redux Imports
-import type { Blog } from "../types/blog";
-import { deleteBlog } from "../redux/blogsSlice";
+import type { Blog } from "../../types/blog";
+import { deleteBlog } from "../../redux/blogsSlice";
 import { useDispatch } from "react-redux";
 
 // Date Imports

@@ -1,12 +1,20 @@
 // React Imports
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 // Redux Imports
+import type { Blog } from "../../types/blog";
+import { updateBlog } from "../../redux/blogsSlice";
 import { useDispatch } from "react-redux";
-import { addBlog } from "../redux/blogsSlice";
 
-const BlogNew = () => {
+const BlogEdit = () => {
+
+    // React Router Variables
+    const {id} = useParams();
+    const navigate = useNavigate();
+
+    // Redux Dispatch
+    const dispatch = useDispatch();
 
     // State Variables
     const [title, setTitle] = useState<string>("");
@@ -14,38 +22,49 @@ const BlogNew = () => {
     const [category, setCategory] = useState<string>("");
     const [content, setContent] = useState<string>("");
 
-    // React Router Navigation
-    const navigate = useNavigate();
+    // Find the Blog
+    useEffect(() => {
+        const fetchBlog = async () => {
+            const response: Response = await fetch(`https://wfywh0o582.execute-api.us-west-1.amazonaws.com/api/blogs/${id}`);
+            const json: Blog[] = await response.json();
+            // Response will return an array of objects if working
+            if (response.ok) {
+                setTitle(json[0].title);
+                setAuthor(json[0].author);
+                setCategory(json[0].content);
+                setContent(json[0].content);
+            }
+        }
+        fetchBlog();
+    }, [id]);
 
-    // Redux Dispatch
-    const dispatch = useDispatch();
-
+    // Submit Event
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const blog = { title, author, category, content };
-        const response = await fetch("https://wfywh0o582.execute-api.us-west-1.amazonaws.com/api/blogs", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
+        const response = await fetch(`https://wfywh0o582.execute-api.us-west-1.amazonaws.com/api/blogs/${id}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(blog)
         });
         const json = await response.json();
         // Response will return an array of 1 object if working
-        if(!response.ok) {
+        if (!response.ok) {
             console.log(json.error);
         }
-        if(response.ok) {
+        if (response.ok) {
             setTitle("");
             setAuthor("");
             setCategory("");
             setContent("");
-            console.log("New blog added", json[0]);
-            dispatch(addBlog(json[0]));
+            console.log("Blog Updated", json[0]);
+            dispatch(updateBlog(json[0]));
             navigate(`/blogs/${json[0].id}`);
         }
     }
 
     return (
-        <main className="blog-new">
+        <div className="blog-edit">
             <form onSubmit={handleSubmit}>
                 <h3>Add a New Blog</h3>
                 <label>Blog Title</label>
@@ -71,10 +90,10 @@ const BlogNew = () => {
                     onChange={(event) => setContent(event.target.value)}
                     value={content}
                 />
-                <button>Add Blog</button>
+                <button>Update Blog</button>
             </form>
-        </main>
+        </div>
     );
 }
  
-export default BlogNew;
+export default BlogEdit;

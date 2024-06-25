@@ -1,5 +1,5 @@
 // Component Imports
-import BlogList from "../components/BlogList";
+import BlogList from "../../components/blogs/BlogList";
 
 const Blogs = () => {
     return (

@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 
 // Type Imports
-import type { Blog } from "../types/blog";
+import type { Blog } from "../../types/blog";
 
 // Date Imports
 import { formatDistanceToNow } from "date-fns/formatDistanceToNow";

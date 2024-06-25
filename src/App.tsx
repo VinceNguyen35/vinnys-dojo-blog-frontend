@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Page Imports
 import Home from './pages/Home';
-import Blogs from "./pages/Blogs";
-import BlogNew from './pages/BlogNew';
-import BlogEdit from './pages/BlogEdit';
-import BlogShow from './pages/BlogShow';
+import Blogs from "./pages/blogs/Blogs";
+import BlogNew from './pages/blogs/BlogNew';
+import BlogEdit from './pages/blogs/BlogEdit';
+import BlogShow from './pages/blogs/BlogShow';
 import NotFound from './pages/NotFound';
 
 // Component Imports

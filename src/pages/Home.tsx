@@ -1,6 +1,6 @@
 // Component Imports
 import Bio from "../components/Bio";
-import LatestBlog from "../components/LatestBlog";
+import LatestBlog from "../components/blogs/LatestBlog";
 import Sidebar from "../components/Sidebar";
 
 const Home = () => {

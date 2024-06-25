@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 // Redux Imports
 import { useSelector, useDispatch } from "react-redux";
-import { getLatestBlog } from "../redux/latestBlogSlice";
-import { RootState, AppDispatch } from "../redux/store";
+import { getLatestBlog } from "../../redux/latestBlogSlice";
+import { RootState, AppDispatch } from "../../redux/store";
 
 // Date Imports
 import { formatDistanceToNow } from "date-fns";
