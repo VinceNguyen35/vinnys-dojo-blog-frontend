@@ -16,11 +16,15 @@
 @import "components/header";
 @import "components/navbar";
 @import "components/bio";
-@import "components/latestBlog";
 @import "components/sidebar";
-@import "components/blogList";
-@import "components/blogListItem";
-@import "components/footer";
+
+// components/blogs
+@import "components/blogs/latestBlog";
+@import "components/blogs/blogList";
+@import "components/blogs/blogListItem";
+
+// components/categories
+@import "components/categories/category";
 
 // pages
 @import "pages/home";
@@ -31,3 +35,6 @@
 @import "pages/blogs/blogEdit";
 @import "pages/blogs/blogNew";
 @import "pages/blogs/blogShow";
+
+// pages/categories
+@import "pages/categories/categories";
