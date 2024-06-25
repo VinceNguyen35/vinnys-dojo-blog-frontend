@@ -1,5 +1,6 @@
 // React Imports
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Redux Imports
 import { useSelector, useDispatch } from "react-redux";
@@ -10,6 +11,9 @@ import { RootState, AppDispatch } from "../redux/store";
 import type { Category } from "../types/category";
 
 const Sidebar = () => {
+
+    // Router Variables
+    const navigate = useNavigate();
 
     // Redux Variables
     const dispatch = useDispatch<AppDispatch>();
@@ -26,7 +30,13 @@ const Sidebar = () => {
         <aside className="sidebar">
             <h2>Categories:</h2>
             {categories.categories.map((category: Category, index: number) => (
-                <h3 key={index}>{category.category}</h3>
+                <h3
+                    key={index}
+                    className="category"
+                    onClick={() => navigate(`/categories/${category.category}`)}
+                >
+                    {category.category}
+                </h3>
             ))}
         </aside>
     );
