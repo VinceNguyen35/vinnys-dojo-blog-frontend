@@ -1,10 +1,11 @@
 .blog-list-item {
     @include section();
     cursor: pointer;
-    background-color: white;
+    background-color: rgba(238, 179, 50, 0.4);
+    box-shadow: 10px 5px 5px black;
     margin: 25px;
 }
 
 .blog-list-item:hover {
-    background-color: complement($primary);
+    background-color: light-comp($primary);
 }

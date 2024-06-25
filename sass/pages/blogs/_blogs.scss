@@ -1,4 +1,8 @@
 .blogs {
     @include section();
     margin: 50px;
+
+    h2 {
+        margin-left: 25px;
+    }
 }

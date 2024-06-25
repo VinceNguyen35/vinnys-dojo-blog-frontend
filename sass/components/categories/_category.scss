@@ -1,10 +1,10 @@
 .category {
     @include section();
     cursor: pointer;
-    background-color: white;
+    background-color: rgba(238,179,50, 0.4);
     margin: 25px;
 }
 
 .category:hover {
-    background-color: complement($primary);
+    background-color: light-comp($primary);
 }

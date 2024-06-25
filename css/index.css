@@ -23,15 +23,6 @@ hr {
   border-top: 1px dotted #efefef;
 }
 
-.background {
-  min-height: 200%;
-  width: 200%;
-  height: auto;
-  position: absolute;
-  z-index: -1;
-  opacity: 40%;
-}
-
 .br {
   border-radius: 20px;
 }
@@ -61,43 +52,57 @@ nav :hover {
 }
 
 .bio {
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 10px 5px 5px black;
   padding: 10px;
 }
 
 .sidebar {
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 10px 5px 5px black;
   padding: 10px;
   height: 95%;
 }
 
 .latest-blog {
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 10px 5px 5px black;
   padding: 10px;
+  background-color: rgba(238, 179, 50, 0.4);
+  border: 1px solid black;
+  box-shadow: 10px 5px 5px black;
   cursor: pointer;
 }
 
 .latest-blog:hover {
-  background-color: #eeb332;
+  background-color: #fae7bf;
 }
 
 .blog-list-item {
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 10px 5px 5px black;
   padding: 10px;
   cursor: pointer;
-  background-color: white;
+  background-color: rgba(238, 179, 50, 0.4);
+  box-shadow: 10px 5px 5px black;
   margin: 25px;
 }
 
 .blog-list-item:hover {
-  background-color: #eeb332;
+  background-color: #fae7bf;
 }
 
 .category {
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 10px 5px 5px black;
   padding: 10px;
   cursor: pointer;
-  background-color: white;
+  background-color: rgba(238, 179, 50, 0.4);
   margin: 25px;
 }
 
 .category:hover {
-  background-color: #eeb332;
+  background-color: #fae7bf;
 }
 
 .home {
@@ -114,11 +119,18 @@ nav :hover {
 }
 
 .blogs {
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 10px 5px 5px black;
   padding: 10px;
   margin: 50px;
 }
+.blogs h2 {
+  margin-left: 25px;
+}
 
 .blog-show {
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 10px 5px 5px black;
   padding: 10px;
   margin: 50px;
 }
@@ -128,4 +140,16 @@ nav :hover {
 
 .categories {
   margin: 50px;
+}
+.categories h2 {
+  margin-left: 25px;
+}
+
+.background {
+  min-height: 200%;
+  width: 200%;
+  height: auto;
+  position: absolute;
+  z-index: -1;
+  opacity: 40%;
 }
