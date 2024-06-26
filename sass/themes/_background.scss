@@ -1,12 +1,5 @@
-.background-wrapper {
-    width: 100%;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-    opacity: 40%;
-}
-
-.background {
-    width: 200%;
-    height: 200%;    
+body {
+    background-image: url("/background.jpg");
+    background-size: 100%;
+    background-repeat: repeat-y;
 }

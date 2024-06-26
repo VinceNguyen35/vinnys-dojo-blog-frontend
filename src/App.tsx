@@ -34,13 +34,6 @@ function App() {
 
   return (
     <Router>
-      <div className="background-wrapper">
-        <img
-          src="./background.jpg"
-          alt="background picture of mount fuji"
-          className="background"
-        />
-      </div>
       <Header />
       <Navbar />
       <Routes>

@@ -233,6 +233,7 @@ button {
 }
 .blog-show p {
   margin: 20px 0;
+  white-space: pre-wrap;
 }
 
 .categories {
@@ -242,15 +243,8 @@ button {
   margin-left: 25px;
 }
 
-.background-wrapper {
-  width: 100%;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-  opacity: 40%;
-}
-
-.background {
-  width: 200%;
-  height: 200%;
+body {
+  background-image: url("/background.jpg");
+  background-size: 100%;
+  background-repeat: repeat-y;
 }
