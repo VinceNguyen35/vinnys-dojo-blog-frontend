@@ -50,23 +50,27 @@ const BlogNew = () => {
             <label>Blog Title</label>
             <input
                 type="text"
+                required
                 onChange={(event) => setTitle(event.target.value)}
                 value={title}
             />
             <label>Blog Author</label>
             <input
                 type="text"
+                required
                 onChange={(event) => setAuthor(event.target.value)}
                 value={author}
             />
             <label>Blog Category</label>
             <input
                 type="text"
+                required
                 onChange={(event) => setCategory(event.target.value)}
                 value={category}
             />
             <label>Blog Content</label>
             <textarea
+                required
                 onChange={(event) => setContent(event.target.value)}
                 value={content}
             />
