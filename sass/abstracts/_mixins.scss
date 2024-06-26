@@ -31,12 +31,24 @@
         margin-bottom: 10px;
     }
 
+    label {
+        font-weight: 500;
+    }
+
     input {
+        padding: 10px;
         margin-bottom: 10px;
     }
 
-    textarea{
+    textarea {
+        height: 100px;
+        padding: 10px;
         margin-bottom: 20px;
+        resize: vertical;
+    }
+
+    :focus {
+        background-color: rgba(238, 179, 50, 0.4);
     }
 }
 

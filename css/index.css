@@ -141,11 +141,21 @@ nav :hover {
 .blog-edit h2 {
   margin-bottom: 10px;
 }
+.blog-edit label {
+  font-weight: 500;
+}
 .blog-edit input {
+  padding: 10px;
   margin-bottom: 10px;
 }
 .blog-edit textarea {
+  height: 100px;
+  padding: 10px;
   margin-bottom: 20px;
+  resize: vertical;
+}
+.blog-edit :focus {
+  background-color: rgba(238, 179, 50, 0.4);
 }
 
 .blog-new {
@@ -161,11 +171,21 @@ nav :hover {
 .blog-new h2 {
   margin-bottom: 10px;
 }
+.blog-new label {
+  font-weight: 500;
+}
 .blog-new input {
+  padding: 10px;
   margin-bottom: 10px;
 }
 .blog-new textarea {
+  height: 100px;
+  padding: 10px;
   margin-bottom: 20px;
+  resize: vertical;
+}
+.blog-new :focus {
+  background-color: rgba(238, 179, 50, 0.4);
 }
 
 .blog-show {
