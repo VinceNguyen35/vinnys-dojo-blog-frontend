@@ -1,0 +1,4 @@
+.blog-edit {
+    @include forms();
+    @include section();
+}

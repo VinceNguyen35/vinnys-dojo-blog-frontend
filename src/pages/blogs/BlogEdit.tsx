@@ -64,35 +64,33 @@ const BlogEdit = () => {
     }
 
     return (
-        <div className="blog-edit">
-            <form onSubmit={handleSubmit}>
-                <h3>Add a New Blog</h3>
-                <label>Blog Title</label>
-                <input
-                    type="text"
-                    onChange={(event) => setTitle(event.target.value)}
-                    value={title}
-                />
-                <label>Blog Author</label>
-                <input
-                    type="text"
-                    onChange={(event) => setAuthor(event.target.value)}
-                    value={author}
-                />
-                <label>Blog Category</label>
-                <input
-                    type="text"
-                    onChange={(event) => setCategory(event.target.value)}
-                    value={category}
-                />
-                <label>Blog Content</label>
-                <textarea
-                    onChange={(event) => setContent(event.target.value)}
-                    value={content}
-                />
-                <button>Update Blog</button>
-            </form>
-        </div>
+        <form onSubmit={handleSubmit} className="blog-edit">
+            <h2>Edit Blog</h2>
+            <label>Blog Title</label>
+            <input
+                type="text"
+                onChange={(event) => setTitle(event.target.value)}
+                value={title}
+            />
+            <label>Blog Author</label>
+            <input
+                type="text"
+                onChange={(event) => setAuthor(event.target.value)}
+                value={author}
+            />
+            <label>Blog Category</label>
+            <input
+                type="text"
+                onChange={(event) => setCategory(event.target.value)}
+                value={category}
+            />
+            <label>Blog Content</label>
+            <textarea
+                onChange={(event) => setContent(event.target.value)}
+                value={content}
+            />
+            <button>Update Blog</button>
+        </form>
     );
 }
  

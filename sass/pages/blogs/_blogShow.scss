@@ -2,7 +2,5 @@
     @include section();
     margin: 50px;
 
-    p {
-        margin: 20px 0;
-    }
+    @include fontSizing();
 }

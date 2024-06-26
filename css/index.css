@@ -128,11 +128,63 @@ nav :hover {
   margin-left: 25px;
 }
 
+.blog-edit {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 50px auto;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 10px 5px 5px black;
+  padding: 10px;
+}
+.blog-edit h2 {
+  margin-bottom: 10px;
+}
+.blog-edit input {
+  margin-bottom: 10px;
+}
+.blog-edit textarea {
+  margin-bottom: 20px;
+}
+
+.blog-new {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 50px auto;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 10px 5px 5px black;
+  padding: 10px;
+}
+.blog-new h2 {
+  margin-bottom: 10px;
+}
+.blog-new input {
+  margin-bottom: 10px;
+}
+.blog-new textarea {
+  margin-bottom: 20px;
+}
+
 .blog-show {
   background-color: rgba(255, 255, 255, 0.6);
   box-shadow: 10px 5px 5px black;
   padding: 10px;
   margin: 50px;
+}
+.blog-show h2 {
+  color: #db9c12;
+}
+.blog-show h3 {
+  font-weight: 600;
+}
+.blog-show h4 {
+  font-weight: 500;
+}
+.blog-show h5 {
+  font-weight: 400;
 }
 .blog-show p {
   margin: 20px 0;
@@ -145,11 +197,15 @@ nav :hover {
   margin-left: 25px;
 }
 
-.background {
-  min-height: 200%;
-  width: 200%;
-  height: auto;
+.background-wrapper {
+  width: 100%;
+  overflow: hidden;
   position: absolute;
   z-index: -1;
   opacity: 40%;
+}
+
+.background {
+  width: 200%;
+  height: 200%;
 }

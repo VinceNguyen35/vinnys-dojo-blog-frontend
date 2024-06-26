@@ -1,11 +1,11 @@
 // variables % functions
 @import "abstracts/variables";
 @import "abstracts/functions";
+@import "abstracts/mixins";
 
 // base
 @import "base/base";
 @import "base/colors";
-@import "base/section";
 
 // layout
 @import "layout/breakpoints";

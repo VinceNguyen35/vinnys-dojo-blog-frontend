@@ -1,0 +1,47 @@
+@mixin fontSizing {
+    h2 {
+        color: dark-comp($primary);
+    }
+
+    h3 {
+        font-weight: 600;
+    }
+
+    h4 {
+        font-weight: 500;
+    }
+
+    h5 {
+        font-weight: 400;
+    }
+
+    p {
+        margin: 20px 0;
+    }
+}
+
+@mixin forms() {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 50px auto;
+    text-align: center;
+    
+    h2 {
+        margin-bottom: 10px;
+    }
+
+    input {
+        margin-bottom: 10px;
+    }
+
+    textarea{
+        margin-bottom: 20px;
+    }
+}
+
+@mixin section() {
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 10px 5px 5px black;
+    padding: 10px;
+}

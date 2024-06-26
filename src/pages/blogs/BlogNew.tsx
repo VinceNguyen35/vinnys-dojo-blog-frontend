@@ -45,35 +45,33 @@ const BlogNew = () => {
     }
 
     return (
-        <main className="blog-new">
-            <form onSubmit={handleSubmit}>
-                <h3>Add a New Blog</h3>
-                <label>Blog Title</label>
-                <input
-                    type="text"
-                    onChange={(event) => setTitle(event.target.value)}
-                    value={title}
-                />
-                <label>Blog Author</label>
-                <input
-                    type="text"
-                    onChange={(event) => setAuthor(event.target.value)}
-                    value={author}
-                />
-                <label>Blog Category</label>
-                <input
-                    type="text"
-                    onChange={(event) => setCategory(event.target.value)}
-                    value={category}
-                />
-                <label>Blog Content</label>
-                <textarea
-                    onChange={(event) => setContent(event.target.value)}
-                    value={content}
-                />
-                <button>Add Blog</button>
-            </form>
-        </main>
+        <form onSubmit={handleSubmit} className="blog-new">
+            <h2>Add a New Blog</h2>
+            <label>Blog Title</label>
+            <input
+                type="text"
+                onChange={(event) => setTitle(event.target.value)}
+                value={title}
+            />
+            <label>Blog Author</label>
+            <input
+                type="text"
+                onChange={(event) => setAuthor(event.target.value)}
+                value={author}
+            />
+            <label>Blog Category</label>
+            <input
+                type="text"
+                onChange={(event) => setCategory(event.target.value)}
+                value={category}
+            />
+            <label>Blog Content</label>
+            <textarea
+                onChange={(event) => setContent(event.target.value)}
+                value={content}
+            />
+            <button>Add Blog</button>
+        </form>
     );
 }
  
