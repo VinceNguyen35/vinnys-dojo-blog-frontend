@@ -93,7 +93,7 @@ const BlogEdit = () => {
                 onChange={(event) => setContent(event.target.value)}
                 value={content}
             />
-            <button>Update Blog</button>
+            <button className="button-update">Update Blog</button>
         </form>
     );
 }

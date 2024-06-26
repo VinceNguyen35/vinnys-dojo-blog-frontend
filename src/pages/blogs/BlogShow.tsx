@@ -69,13 +69,13 @@ const BlogShow = () => {
                 <p>{blog.content}</p>
             </article>
             <button
-                className="button edit"
+                className="button-edit"
                 onClick={() => navigate(`/blogs/${blog.id}/edit`)}
             >
                 Edit
             </button>
             <button
-                className="button delete"
+                className="button-delete"
                 onClick={() => handleDelete()}
             >
                 Delete

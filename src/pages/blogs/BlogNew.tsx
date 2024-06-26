@@ -74,7 +74,7 @@ const BlogNew = () => {
                 onChange={(event) => setContent(event.target.value)}
                 value={content}
             />
-            <button>Add Blog</button>
+            <button className="button-add">Add Blog</button>
         </form>
     );
 }
