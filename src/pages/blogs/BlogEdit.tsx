@@ -9,6 +9,7 @@ import type { RootState } from "../../redux/store";
 // Redux Imports
 import { updateBlog } from "../../redux/blogsSlice";
 import { addCategory, deleteCategory } from "../../redux/categoriesSlice";
+import { updateLatestBlog } from "../../redux/latestBlogSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const BlogEdit = () => {
@@ -20,6 +21,7 @@ const BlogEdit = () => {
     // Redux Variables
     const { categories } = useSelector((state: RootState) => state.categories);
     const { blogs } = useSelector((state: RootState) => state.blogs);
+    const { latestBlog } = useSelector((state: RootState) => state.latestBlog);
     const dispatch = useDispatch();
 
     // State Variables
@@ -61,33 +63,41 @@ const BlogEdit = () => {
             console.log(json.error);
         }
         if (response.ok) {
+            // Check if category changed or not
+            if (oldCategory !== category) {
+                checkAddCategory(category);
+                checkDeleteCategory(oldCategory);
+            }
+            checkLatestBlog(json[0]);
             dispatch(updateBlog(json[0]));
-            checkAddCategory(category);
-            checkDeleteCategory(oldCategory);
             setTitle("");
             setAuthor("");
             setCategory("");
             setOldCategory("");
             setContent("");
             console.log("Blog Updated", json[0]);
-            console.log(categories);
-            console.log(blogs);
             navigate(`/blogs/${json[0].id}`);
         }
     }
 
     // Helper Functions
     const checkAddCategory = (value: string) => {
-        console.log(categories);
         if (!categories.some(object => object.category === value)) {
             dispatch(addCategory(value));
         }
     }
 
     const checkDeleteCategory = (value: string) => {
-        console.log(blogs);
-        if (blogs.some(blog => blog.category === value)) {
+        // There should only be one blog with the category left before
+        // we update the blog AND delete the category
+        if (blogs.filter(blog => blog.category === value).length === 1) {
             dispatch(deleteCategory(value));
+        }
+    }
+
+    const checkLatestBlog = (blog: Blog) => {
+        if (latestBlog.created === blog.created) {
+            dispatch(updateLatestBlog(blog));
         }
     }
 
