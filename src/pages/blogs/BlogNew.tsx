@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Redux Imports
-import { useDispatch } from "react-redux";
+import type { RootState } from "../../redux/store";
+import { useSelector, useDispatch } from "react-redux";
 import { addBlog } from "../../redux/blogsSlice";
 import { updateLatestBlog } from "../../redux/latestBlogSlice";
 import { addCategory } from "../../redux/categoriesSlice";
@@ -19,9 +20,11 @@ const BlogNew = () => {
     // React Router Navigation
     const navigate = useNavigate();
 
-    // Redux Dispatch
+    // Redux Variables
+    const { categories } = useSelector((state: RootState) => state.categories);
     const dispatch = useDispatch();
 
+    // Submit Action
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const blog = { title, author, category, content };
@@ -43,8 +46,15 @@ const BlogNew = () => {
             console.log("New blog added", json[0]);
             dispatch(addBlog(json[0]));
             dispatch(updateLatestBlog(json[0]));
-            dispatch(addCategory(json[0].category));
+            checkAddCategory(json[0].category);
             navigate(`/blogs/${json[0].id}`);
+        }
+    }
+
+    // Helper Functions
+    const checkAddCategory = (value: string) => {
+        if(!categories.some(object => object.category === value)) {
+            dispatch(addCategory(value));
         }
     }
 

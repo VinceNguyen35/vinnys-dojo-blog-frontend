@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { Category } from "../types/category";
 
@@ -28,10 +28,14 @@ export const categoriesSlice = createSlice({
     initialState,
     reducers: {
         addCategory: (state: CategoriesState, action: PayloadAction<string>) => {
-            if (!current(state.categories).some(object => object.category === action.payload)) {
-                state.categories.push({ category: action.payload });
-            }
-        }
+            state.categories.push({ category: action.payload });
+        },
+        deleteCategory: (state: CategoriesState, action: PayloadAction<string>) => {
+            // Find the category to delete
+            const indexOfDeletedCategory: number = state.categories.findIndex((category) => category.category === action.payload);
+            // Delete the category
+            state.categories.splice(indexOfDeletedCategory, 1);
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(getCategories.fulfilled, (state, action) => {
@@ -44,6 +48,6 @@ export const categoriesSlice = createSlice({
     }
 });
 
-export const { addCategory } = categoriesSlice.actions;
+export const { addCategory, deleteCategory } = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;

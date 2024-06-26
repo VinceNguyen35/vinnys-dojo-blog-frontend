@@ -2,10 +2,14 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-// Redux Imports
+// Type Imports
 import type { Blog } from "../../types/blog";
+import type { RootState } from "../../redux/store";
+
+// Redux Imports
 import { updateBlog } from "../../redux/blogsSlice";
-import { useDispatch } from "react-redux";
+import { addCategory, deleteCategory } from "../../redux/categoriesSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const BlogEdit = () => {
 
@@ -13,13 +17,16 @@ const BlogEdit = () => {
     const {id} = useParams();
     const navigate = useNavigate();
 
-    // Redux Dispatch
+    // Redux Variables
+    const { categories } = useSelector((state: RootState) => state.categories);
+    const { blogs } = useSelector((state: RootState) => state.blogs);
     const dispatch = useDispatch();
 
     // State Variables
     const [title, setTitle] = useState<string>("");
     const [author, setAuthor] = useState<string>("");
     const [category, setCategory] = useState<string>("");
+    const [oldCategory, setOldCategory] = useState<string>("");
     const [content, setContent] = useState<string>("");
 
     // Find the Blog
@@ -32,6 +39,7 @@ const BlogEdit = () => {
                 setTitle(json[0].title);
                 setAuthor(json[0].author);
                 setCategory(json[0].category);
+                setOldCategory(json[0].category);
                 setContent(json[0].content);
             }
         }
@@ -53,13 +61,33 @@ const BlogEdit = () => {
             console.log(json.error);
         }
         if (response.ok) {
+            dispatch(updateBlog(json[0]));
+            checkAddCategory(category);
+            checkDeleteCategory(oldCategory);
             setTitle("");
             setAuthor("");
             setCategory("");
+            setOldCategory("");
             setContent("");
             console.log("Blog Updated", json[0]);
-            dispatch(updateBlog(json[0]));
+            console.log(categories);
+            console.log(blogs);
             navigate(`/blogs/${json[0].id}`);
+        }
+    }
+
+    // Helper Functions
+    const checkAddCategory = (value: string) => {
+        console.log(categories);
+        if (!categories.some(object => object.category === value)) {
+            dispatch(addCategory(value));
+        }
+    }
+
+    const checkDeleteCategory = (value: string) => {
+        console.log(blogs);
+        if (blogs.some(blog => blog.category === value)) {
+            dispatch(deleteCategory(value));
         }
     }
 
