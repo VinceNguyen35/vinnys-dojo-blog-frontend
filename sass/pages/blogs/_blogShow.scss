@@ -2,5 +2,21 @@
     @include section();
     margin: 50px;
 
-    @include fontSizing();
+    h2 {
+        margin-bottom: 5px;
+    }
+
+    h3 {
+        font-weight: 600;
+        color: gray;
+    }
+
+    h4 {
+        font-weight: 500;
+        color: gray;
+    }
+
+    p {
+        margin: 20px 0;
+    }
 }

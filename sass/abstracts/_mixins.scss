@@ -1,25 +1,3 @@
-@mixin fontSizing {
-    h2 {
-        color: dark-comp($primary);
-    }
-
-    h3 {
-        font-weight: 600;
-    }
-
-    h4 {
-        font-weight: 500;
-    }
-
-    h5 {
-        font-weight: 400;
-    }
-
-    p {
-        margin: 20px 0;
-    }
-}
-
 @mixin forms() {
     display: flex;
     flex-direction: column;
