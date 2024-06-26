@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 // Redux Imports
 import { useDispatch } from "react-redux";
 import { addBlog } from "../../redux/blogsSlice";
+import { updateLatestBlog } from "../../redux/latestBlogSlice";
+import { addCategory } from "../../redux/categoriesSlice";
 
 const BlogNew = () => {
 
@@ -40,6 +42,8 @@ const BlogNew = () => {
             setContent("");
             console.log("New blog added", json[0]);
             dispatch(addBlog(json[0]));
+            dispatch(updateLatestBlog(json[0]));
+            dispatch(addCategory(json[0].category));
             navigate(`/blogs/${json[0].id}`);
         }
     }

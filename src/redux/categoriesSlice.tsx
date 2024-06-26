@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-//import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 import type { Category } from "../types/category";
 
 export interface CategoriesState {
@@ -26,7 +26,13 @@ export const getCategories = createAsyncThunk("blogs/getCategories", async () =>
 export const categoriesSlice = createSlice({
     name: "categories",
     initialState,
-    reducers: {},
+    reducers: {
+        addCategory: (state: CategoriesState, action: PayloadAction<string>) => {
+            if (!current(state.categories).some(object => object.category === action.payload)) {
+                state.categories.push({ category: action.payload });
+            }
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(getCategories.fulfilled, (state, action) => {
             state.categories = action.payload as Category[];
@@ -38,6 +44,6 @@ export const categoriesSlice = createSlice({
     }
 });
 
-//export const { updateLatestBlog } = categoriesSlice.actions;
+export const { addCategory } = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;
