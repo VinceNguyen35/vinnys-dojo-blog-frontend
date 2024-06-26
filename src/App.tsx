@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Blogs from "./pages/blogs/Blogs";
 import BlogNew from './pages/blogs/BlogNew';
 import BlogEdit from './pages/blogs/BlogEdit';
+import BlogDelete from "./pages/blogs/BlogDelete";
 import BlogShow from './pages/blogs/BlogShow';
 import Categories from "./pages/categories/Categories";
 import CategoriesShow from "./pages/categories/CategoriesShow";
@@ -42,6 +43,7 @@ function App() {
         <Route path="/blogs/new" element={<BlogNew />} />
         <Route path="/blogs/:id" element={<BlogShow />} />
         <Route path="/blogs/:id/edit" element={<BlogEdit />} />
+        <Route path="/blogs/:id/delete" element={<BlogDelete />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/:category" element={<CategoriesShow />} />
         <Route path="*" element={<NotFound />} />

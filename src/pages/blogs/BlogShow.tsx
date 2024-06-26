@@ -4,13 +4,6 @@ import { useParams, useNavigate } from "react-router-dom";
 
 // Type Imports
 import type { Blog } from "../../types/blog";
-import type { RootState, AppDispatch } from "../../redux/store";
-
-// Redux Imports
-import { deleteBlog } from "../../redux/blogsSlice";
-import { getLatestBlog } from "../../redux/latestBlogSlice";
-import { deleteCategory } from "../../redux/categoriesSlice";
-import { useSelector, useDispatch } from "react-redux";
 
 // Date Imports
 import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
@@ -20,10 +13,6 @@ const BlogShow = () => {
     // React Router Variables
     const {id} = useParams();
     const navigate = useNavigate();
-
-    // Redux Variables
-    const { blogs } = useSelector((state: RootState) => state.blogs);
-    const dispatch = useDispatch<AppDispatch>();
 
     // State Variable
     const [blog, setBlog] = useState<Blog>({
@@ -48,33 +37,6 @@ const BlogShow = () => {
         fetchBlog();
     }, [id]);
 
-    // Handle Deleting a Blog
-    const handleDelete = async () => {
-        const response = await fetch(`https://wfywh0o582.execute-api.us-west-1.amazonaws.com/api/blogs/${id}`, {
-            method: "DELETE"
-        });
-        const json = await response.json();
-        // Response will return an array of 1 object if working
-        if (!response.ok) {
-            console.log(json.error);
-        }
-        if (response.ok) {
-            console.log("Blog Deleted", json[0]);
-            dispatch(deleteBlog(json[0]));
-            checkDeleteCategory(json[0].category);
-            dispatch(getLatestBlog());
-            navigate("/");
-        }
-    }
-
-    const checkDeleteCategory = (value: string) => {
-        // There should only be one blog with the category left before
-        // we update the blog AND delete the category
-        if (blogs.filter(blog => blog.category === value).length === 1) {
-            dispatch(deleteCategory(value));
-        }
-    }
-
     return (
         <main className="blog-show">
             <article className="blog">
@@ -92,7 +54,7 @@ const BlogShow = () => {
             </button>
             <button
                 className="button-delete"
-                onClick={() => handleDelete()}
+                onClick={() => navigate(`/blogs/${blog.id}/delete`)}
             >
                 Delete
             </button>
