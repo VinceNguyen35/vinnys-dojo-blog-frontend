@@ -65,7 +65,7 @@ const BlogDelete = () => {
 
     return (
         <form onSubmit={handleDelete} className="blog-delete">
-            <label>Type in the Secret Key to Delete</label>
+            <label>Type in the Secret Key to Delete Blog</label>
             <input
                 type="text"
                 required

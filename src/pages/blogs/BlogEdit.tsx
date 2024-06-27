@@ -12,6 +12,9 @@ import { addCategory, deleteCategory } from "../../redux/categoriesSlice";
 import { updateLatestBlog } from "../../redux/latestBlogSlice";
 import { useSelector, useDispatch } from "react-redux";
 
+// Component Imports
+import SecretKeyMessage from "../../components/SecretKeyMessage";
+
 const BlogEdit = () => {
 
     // React Router Variables
@@ -30,6 +33,8 @@ const BlogEdit = () => {
     const [category, setCategory] = useState<string>("");
     const [oldCategory, setOldCategory] = useState<string>("");
     const [content, setContent] = useState<string>("");
+    const [secretKey, setSecretKey] = useState<string>("");
+    const [isSecretKeyWrong, setIsSecretKeyWrong] = useState<boolean>(false);
 
     // Find the Blog
     useEffect(() => {
@@ -51,32 +56,38 @@ const BlogEdit = () => {
     // Submit Event
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const blog = { title, author, category, content };
-        const response = await fetch(`https://wfywh0o582.execute-api.us-west-1.amazonaws.com/api/blogs/${id}`, {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(blog)
-        });
-        const json = await response.json();
-        // Response will return an array of 1 object if working
-        if (!response.ok) {
-            console.log(json.error);
-        }
-        if (response.ok) {
-            // Check if category changed or not
-            if (oldCategory !== category) {
-                checkAddCategory(category);
-                checkDeleteCategory(oldCategory);
+        if (secretKey === "VinceNguyen35") {
+            setSecretKey("");
+            setIsSecretKeyWrong(false);
+            const blog = { title, author, category, content };
+            const response = await fetch(`https://wfywh0o582.execute-api.us-west-1.amazonaws.com/api/blogs/${id}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(blog)
+            });
+            const json = await response.json();
+            // Response will return an array of 1 object if working
+            if (!response.ok) {
+                console.log(json.error);
             }
-            checkLatestBlog(json[0]);
-            dispatch(updateBlog(json[0]));
-            setTitle("");
-            setAuthor("");
-            setCategory("");
-            setOldCategory("");
-            setContent("");
-            console.log("Blog Updated", json[0]);
-            navigate(`/blogs/${json[0].id}`);
+            if (response.ok) {
+                // Check if category changed or not
+                if (oldCategory !== category) {
+                    checkAddCategory(category);
+                    checkDeleteCategory(oldCategory);
+                }
+                checkLatestBlog(json[0]);
+                dispatch(updateBlog(json[0]));
+                setTitle("");
+                setAuthor("");
+                setCategory("");
+                setOldCategory("");
+                setContent("");
+                console.log("Blog Updated", json[0]);
+                navigate(`/blogs/${json[0].id}`);
+            }
+        } else {
+            setIsSecretKeyWrong(true);
         }
     }
 
@@ -131,6 +142,17 @@ const BlogEdit = () => {
                 onChange={(event) => setContent(event.target.value)}
                 value={content}
             />
+            <label>Type in the Secret Key to Update Blog</label>
+            <input
+                type="text"
+                required
+                onChange={(event) => setSecretKey(event.target.value)}
+                value={secretKey}
+            />
+            {
+                isSecretKeyWrong &&
+                <SecretKeyMessage />
+            }
             <button className="button-update">Update Blog</button>
         </form>
     );

@@ -9,6 +9,9 @@ import { addBlog } from "../../redux/blogsSlice";
 import { updateLatestBlog } from "../../redux/latestBlogSlice";
 import { addCategory } from "../../redux/categoriesSlice";
 
+// Component Imports
+import SecretKeyMessage from "../../components/SecretKeyMessage";
+
 const BlogNew = () => {
 
     // State Variables
@@ -16,6 +19,8 @@ const BlogNew = () => {
     const [author, setAuthor] = useState<string>("");
     const [category, setCategory] = useState<string>("");
     const [content, setContent] = useState<string>("");
+    const [secretKey, setSecretKey] = useState<string>("");
+    const [isSecretKeyWrong, setIsSecretKeyWrong] = useState<boolean>(false);
 
     // React Router Navigation
     const navigate = useNavigate();
@@ -27,27 +32,33 @@ const BlogNew = () => {
     // Submit Action
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const blog = { title, author, category, content };
-        const response = await fetch("https://wfywh0o582.execute-api.us-west-1.amazonaws.com/api/blogs", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(blog)
-        });
-        const json = await response.json();
-        // Response will return an array of 1 object if working
-        if(!response.ok) {
-            console.log(json.error);
-        }
-        if(response.ok) {
-            setTitle("");
-            setAuthor("");
-            setCategory("");
-            setContent("");
-            console.log("New blog added", json[0]);
-            dispatch(addBlog(json[0]));
-            dispatch(updateLatestBlog(json[0]));
-            checkAddCategory(json[0].category);
-            navigate(`/blogs/${json[0].id}`);
+        if (secretKey === "VinceNguyen35") {
+            setSecretKey("");
+            setIsSecretKeyWrong(false);
+            const blog = { title, author, category, content };
+            const response = await fetch("https://wfywh0o582.execute-api.us-west-1.amazonaws.com/api/blogs", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(blog)
+            });
+            const json = await response.json();
+            // Response will return an array of 1 object if working
+            if (!response.ok) {
+                console.log(json.error);
+            }
+            if (response.ok) {
+                setTitle("");
+                setAuthor("");
+                setCategory("");
+                setContent("");
+                console.log("New blog added", json[0]);
+                dispatch(addBlog(json[0]));
+                dispatch(updateLatestBlog(json[0]));
+                checkAddCategory(json[0].category);
+                navigate(`/blogs/${json[0].id}`);
+            }
+        } else {
+            setIsSecretKeyWrong(true);
         }
     }
 
@@ -88,6 +99,17 @@ const BlogNew = () => {
                 onChange={(event) => setContent(event.target.value)}
                 value={content}
             />
+            <label>Type in the Secret Key to Add Blog</label>
+            <input
+                type="text"
+                required
+                onChange={(event) => setSecretKey(event.target.value)}
+                value={secretKey}
+            />
+            {
+                isSecretKeyWrong &&
+                <SecretKeyMessage />
+            }
             <button className="button-add">Add Blog</button>
         </form>
     );

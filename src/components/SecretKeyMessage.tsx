@@ -1,6 +1,6 @@
 const SecretKeyMessage = () => {
     return (
-        <p>Error: Your Secret Key is Incorrect. Try Again!</p>
+        <p className="secret-key-message">Error: Your Secret Key is Incorrect. Try Again!</p>
     );
 }
  

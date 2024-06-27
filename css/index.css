@@ -91,6 +91,10 @@ button {
   background-color: rgba(255, 0, 0, 0.6);
 }
 
+.secret-key-message {
+  color: red;
+}
+
 .latest-blog {
   background-color: rgba(255, 255, 255, 0.6);
   box-shadow: 10px 5px 5px black;
@@ -167,6 +171,36 @@ button {
 }
 .blogs h2 {
   margin-left: 25px;
+}
+
+.blog-delete {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 50px auto;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 10px 5px 5px black;
+  padding: 10px;
+}
+.blog-delete h2 {
+  margin-bottom: 10px;
+}
+.blog-delete label {
+  font-weight: 500;
+}
+.blog-delete input {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.blog-delete textarea {
+  height: 100px;
+  padding: 10px;
+  margin-bottom: 20px;
+  resize: vertical;
+}
+.blog-delete :focus {
+  background-color: rgba(238, 179, 50, 0.4);
 }
 
 .blog-edit {
