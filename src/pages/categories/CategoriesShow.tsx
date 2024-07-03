@@ -7,11 +7,13 @@ import { Blog } from "../../types/blog";
 
 // Component Imports
 import BlogListItem from "../../components/blogs/BlogListItem";
+import Loading from "../../components/Loading";
 
 const CategoriesShow = () => {
 
     // State Variables
     const [blogs, setBlogs] = useState([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     // Router Variables
     const {category} = useParams();
@@ -24,6 +26,9 @@ const CategoriesShow = () => {
             // Response will return an array of objects if working
             if (response.ok) {
                 setBlogs(json);
+                setIsLoading(false);
+            } else {
+                setIsLoading(true);
             }
         }
         fetchBlogs();
@@ -31,14 +36,23 @@ const CategoriesShow = () => {
 
     return ( 
         <main className="blogs">
-            <h2>All {category} Blogs:</h2>
-            {blogs.map((blog: Blog, index: number) => (
-                <BlogListItem
-                    key={index}
-                    blog={blog}
-                    index={index}
-                />
-            ))}
+            {
+                isLoading &&
+                <Loading />
+            }
+            {
+                !isLoading &&
+                <section>
+                    <h2>All {category} Blogs:</h2>
+                    {blogs.map((blog: Blog, index: number) => (
+                        <BlogListItem
+                            key={index}
+                            blog={blog}
+                            index={index}
+                        />
+                    ))}
+                </section>
+            }
         </main>
     );
 }
