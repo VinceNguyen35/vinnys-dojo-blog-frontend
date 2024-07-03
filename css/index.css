@@ -18,6 +18,10 @@ a {
   text-decoration: none;
 }
 
+img {
+  width: 100%;
+}
+
 hr {
   border: 0;
   border-top: 1px dotted #efefef;
@@ -35,7 +39,7 @@ h1 {
   text-align: center;
 }
 h1 .logo {
-  height: 60px;
+  width: 60px;
 }
 
 nav {

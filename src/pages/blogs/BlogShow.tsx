@@ -8,6 +8,10 @@ import type { Blog } from "../../types/blog";
 // Date Imports
 import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
 
+// HTML Parser Imports
+import DOMPurify from "dompurify";
+import parse from "html-react-parser";
+
 const BlogShow = () => {
 
     // React Router Variables
@@ -37,6 +41,9 @@ const BlogShow = () => {
         fetchBlog();
     }, [id]);
 
+    // Parse the Blog Content
+    const sanitizedContent = DOMPurify.sanitize(blog.content);
+
     return (
         <main className="blog-show">
             <article className="blog">
@@ -44,7 +51,7 @@ const BlogShow = () => {
                 <h3>By {blog.author}</h3>
                 <h4>Category: {blog.category}</h4>
                 <h6>Written {formatDistanceToNow(new Date(blog.created), { addSuffix: true })}</h6>
-                <p>{blog.content}</p>
+                <p>{parse(sanitizedContent)}</p>
             </article>
             <button
                 className="button-edit"
