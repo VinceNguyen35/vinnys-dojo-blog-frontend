@@ -22,4 +22,10 @@
             margin-bottom: 0;
         }
     }
+
+    .info-side {
+        @media (max-width: 480px) {
+            width: 70%;
+        }
+    }
 }
