@@ -1,5 +1,6 @@
 .category {
     @include section();
+    @include hoveringOption();
     cursor: pointer;
     background-color: rgba(238,179,50, 0.4);
     margin: 25px;

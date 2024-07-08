@@ -1,5 +1,6 @@
 .latest-blog {
     @include section();
+    @include hoveringOption();
     background-color: rgba(238,179,50, 0.4);
     border: 1px solid black;
     box-shadow: 10px 5px 5px black;

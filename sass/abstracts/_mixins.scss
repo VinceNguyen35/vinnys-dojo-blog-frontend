@@ -35,3 +35,9 @@
     box-shadow: 10px 5px 5px black;
     padding: 10px;
 }
+
+@mixin hoveringOption() {
+    &:hover {
+        transform: translateY(-10px);
+    }
+}

@@ -1,5 +1,6 @@
 .blog-list-item {
     @include section();
+    @include hoveringOption();
     cursor: pointer;
     background-color: rgba(238, 179, 50, 0.4);
     box-shadow: 10px 5px 5px black;

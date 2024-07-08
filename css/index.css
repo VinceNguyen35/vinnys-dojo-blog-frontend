@@ -111,6 +111,9 @@ button {
   box-shadow: 10px 5px 5px black;
   cursor: pointer;
 }
+.latest-blog:hover {
+  transform: translateY(-10px);
+}
 
 .latest-blog:hover {
   background-color: #fae7bf;
@@ -125,6 +128,9 @@ button {
   box-shadow: 10px 5px 5px black;
   margin: 25px;
 }
+.blog-list-item:hover {
+  transform: translateY(-10px);
+}
 
 .blog-list-item:hover {
   background-color: #fae7bf;
@@ -137,6 +143,9 @@ button {
   cursor: pointer;
   background-color: rgba(238, 179, 50, 0.4);
   margin: 25px;
+}
+.category:hover {
+  transform: translateY(-10px);
 }
 
 .category:hover {
